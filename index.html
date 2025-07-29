@@ -20,20 +20,39 @@
     body {
       padding-bottom: 5rem; /* Adjust this value if your bottom nav height changes */
     }
-    @keyframes pulse-slight {
-        0%, 100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-      .animate-pulse-slight {
-        animation: pulse-slight 3s infinite ease-in-out;
-      }
-      .animation-delay-500 {
-        animation-delay: 0.5s;
-      }
+
+    /* Ambulance Animation */
+    @keyframes ambulance-move {
+      0% { transform: translateX(-150%) scale(1); opacity: 0; }
+      10% { opacity: 0.3; }
+      50% { transform: translateX(0%) scale(1.05); opacity: 0.5; }
+      90% { opacity: 0.3; }
+      100% { transform: translateX(150%) scale(1); opacity: 0; }
+    }
+    .animate-ambulance {
+      animation: ambulance-move 15s infinite linear; /* Adjust duration for speed */
+    }
+
+    /* FAQ Accordion Styles */
+    .accordion-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid #e5e7eb; /* Tailwind gray-200 */
+    }
+    .accordion-content {
+      padding: 0 1rem;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+    }
+    .accordion-content.active {
+      max-height: 200px; /* Adjust based on expected content length */
+      padding-bottom: 1rem;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -72,11 +91,13 @@
     <h1 class="text-4xl font-bold mb-4" data-lang="heroTitle">Nyumbani MedCare</h1>
     <p class="text-lg mb-6" data-lang="heroDesc">Get trusted healthcare services delivered to your home</p>
 
-    <div class="relative z-10 inline-block"> <a href="services.html" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-gray-100" data-lang="findProvider">
+    <div class="relative z-10 inline-block">
+      <a href="services.html" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-gray-100" data-lang="findProvider">
         Find a Health Provider
       </a>
-      <div class="absolute -bottom-8 -left-12 w-32 h-32 ambulance-bg opacity-30 animate-pulse-slight"></div>
-      <div class="absolute -top-8 -right-12 w-32 h-32 ambulance-bg opacity-30 animate-pulse-slight animation-delay-500"></div>
+      <div class="absolute inset-x-0 bottom-0 top-0 flex items-center justify-center pointer-events-none">
+        <div class="w-32 h-32 ambulance-bg opacity-20 animate-ambulance"></div>
+      </div>
     </div>
   </section>
 
@@ -127,7 +148,103 @@
         <h4 class="font-semibold mb-1" data-lang="affordable">Affordable Services</h4>
         <p class="text-sm text-gray-600" data-lang="affordableDesc">Transparent pricing. Pay via M-Pesa.</p>
       </div>
+    </div>
 
+    <div class="text-center mt-10">
+      <a href="contact.html" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-700">
+        Get a Free Consultation Today!
+      </a>
+    </div>
+  </section>
+
+  <section class="py-12 px-6">
+    <h2 class="text-2xl font-bold text-center mb-8">What Our Clients Say</h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <p class="italic text-gray-700 mb-4">"Nyumbani MedCare provided excellent nursing care for my grandmother. The nurse was compassionate and highly professional. Truly a lifesaver!"</p>
+        <div class="flex items-center">
+          <img src="https://via.placeholder.com/40" alt="Client 1" class="rounded-full mr-3">
+          <div>
+            <p class="font-semibold">Jane Wanjiku</p>
+            <p class="text-sm text-gray-500">Nairobi, Kenya</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <p class="italic text-gray-700 mb-4">"Booking a physiotherapy session was so easy. The therapist came to my home, which saved me so much time and effort. Highly recommend!"</p>
+        <div class="flex items-center">
+          <img src="https://via.placeholder.com/40" alt="Client 2" class="rounded-full mr-3">
+          <div>
+            <p class="font-semibold">David Ochieng</p>
+            <p class="text-sm text-gray-500">Mombasa, Kenya</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-100 py-12 px-6">
+    <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-white rounded-xl shadow-md mb-4">
+        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+          <span>How do I book a service?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="accordion-content">
+          <p class="text-gray-700">You can easily book a service by navigating to our "Services" page, selecting the desired service, and filling out the brief appointment request form. Our team will then contact you to confirm the details.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md mb-4">
+        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+          <span>What payment methods do you accept?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="accordion-content">
+          <p class="text-gray-700">We primarily accept payments via M-Pesa for convenience. Other payment options may be available upon request.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md mb-4">
+        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+          <span>Are your healthcare providers licensed and verified?</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="accordion-content">
+          <p class="text-gray-700">Yes, all healthcare providers on Nyumbani MedCare are thoroughly background-checked, hold valid licenses, and are highly experienced in their respective fields.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 px-6">
+    <h2 class="text-2xl font-bold text-center mb-8">Health Resources & Blog</h2>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="https://via.placeholder.com/400x250/b0e0e6/ffffff?text=Healthy+Diet" alt="Healthy Diet" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-bold text-lg mb-2">5 Tips for a Balanced Diet</h3>
+          <p class="text-gray-700 text-sm mb-3">Discover simple ways to improve your daily nutrition for better health and energy.</p>
+          <a href="#" class="text-blue-600 hover:underline text-sm">Read More <ion-icon name="arrow-forward-outline" class="align-bottom"></ion-icon></a>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="https://via.placeholder.com/400x250/b0e0e6/ffffff?text=Mental+Wellness" alt="Mental Wellness" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-bold text-lg mb-2">Coping with Stress: A Guide</h3>
+          <p class="text-gray-700 text-sm mb-3">Learn effective strategies to manage stress and improve your mental well-being.</p>
+          <a href="#" class="text-blue-600 hover:underline text-sm">Read More <ion-icon name="arrow-forward-outline" class="align-bottom"></ion-icon></a>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="https://via.placeholder.com/400x250/b0e0e6/ffffff?text=Elderly+Care+Tips" alt="Elderly Care" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-bold text-lg mb-2">Essential Tips for Elderly Care at Home</h3>
+          <p class="text-gray-700 text-sm mb-3">Practical advice for families providing care for elderly loved ones in their homes.</p>
+          <a href="#" class="text-blue-600 hover:underline text-sm">Read More <ion-icon name="arrow-forward-outline" class="align-bottom"></ion-icon></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -217,6 +334,37 @@
       });
       document.getElementById("lang-btn").textContent = currentLang === "en" ? "Swahili" : "English";
     }
+
+    // FAQ Accordion JavaScript
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('ion-icon');
+
+        // Close other open accordions
+        document.querySelectorAll('.accordion-content.active').forEach(openContent => {
+          if (openContent !== content) {
+            openContent.classList.remove('active');
+            openContent.previousElementSibling.querySelector('ion-icon').setAttribute('name', 'chevron-down-outline');
+            openContent.previousElementSibling.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle current accordion
+        content.classList.toggle('active');
+        const isExpanded = content.classList.contains('active');
+        icon.setAttribute('name', isExpanded ? 'chevron-up-outline' : 'chevron-down-outline');
+        header.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Add keyboard accessibility for accordion headers
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); // Prevent scrolling when space is pressed
+          header.click();
+        }
+      });
+    });
   </script>
 </body>
-  </html>
+          </html>
