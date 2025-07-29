@@ -1,99 +1,143 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nyumbani MedCare</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen flex flex-col">  <!-- 🔝 Top Navigation -->  <header class="bg-primary text-white p-4 flex justify-between items-center sticky top-0 z-50">
-    <h1 class="text-xl font-bold">
-      <span id="heroTitle">Nyumbani MedCare</span>
-    </h1>
-    <div class="flex gap-2">
-      <button onclick="toggleLanguage()" class="text-sm bg-white text-primary px-2 py-1 rounded border border-white">
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+  <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-blue-600">Nyumbani MedCare</a>
+
+      <nav class="hidden md:flex space-x-6 text-sm font-semibold">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navHome">Home</a>
+        <a href="services.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navServices">Services</a>
+        <a href="about.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navAbout">About</a>
+        <a href="contact.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navContact">Contact</a>
+        <a href="login.html" class="text-blue-600 hover:underline dark:text-blue-400" data-lang="navLogin">Login</a>
+      </nav>
+
+      <button onclick="toggleLanguage()" class="ml-4 bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium dark:bg-blue-800 dark:text-blue-100">
         <span id="lang-btn">Swahili</span>
       </button>
-      <button id="theme-toggle" class="text-sm bg-white text-primary px-2 py-1 rounded border border-white">Dark</button>
+
+      <button onclick="toggleTheme()" class="ml-4 bg-gray-200 text-gray-800 px-2 py-1 rounded text-xs font-medium dark:bg-gray-700 dark:text-gray-200">
+        <ion-icon name="moon-outline" id="theme-icon" class="text-base align-middle"></ion-icon>
+      </button>
+
+      <button id="menu-btn" class="md:hidden text-2xl text-blue-600 ml-4">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
     </div>
-  </header>  <!-- 🏠 Hero -->  <section class="bg-gradient-to-br from-blue-600 to-blue-400 text-white py-20 px-6 text-center">
-    <h1 class="text-4xl font-bold mb-4" id="heroTitle">Nyumbani MedCare</h1>
-    <p class="text-lg mb-6" id="heroDesc">Get trusted healthcare services delivered to your home</p>
-    <a href="services.html" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-gray-100" id="findProvider">
+
+    <div id="mobile-menu" class="md:hidden px-4 pb-4 hidden dark:bg-gray-800">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navHome">Home</a>
+      <a href="services.html" class="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navServices">Services</a>
+      <a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navAbout">About</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-lang="navContact">Contact</a>
+      <a href="login.html" class="block py-2 text-blue-600 hover:underline dark:text-blue-400" data-lang="navLogin">Login</a>
+    </div>
+  </header>
+
+  <section class="bg-gradient-to-br from-blue-600 to-blue-400 text-white py-20 px-6 text-center">
+    <h1 class="text-4xl font-bold mb-4" data-lang="heroTitle">Nyumbani MedCare</h1>
+    <p class="text-lg mb-6" data-lang="heroDesc">Get trusted healthcare services delivered to your home</p>
+    <a href="services.html" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-gray-100 dark:bg-gray-700 dark:text-blue-100 dark:hover:bg-gray-600" data-lang="findProvider">
       Find a Health Provider
     </a>
-  </section>  <!-- 💉 Services -->  <section class="py-12 px-6">
-    <h2 class="text-2xl font-bold text-center mb-8" id="ourServices">Our Services</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"><div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition">
-    <ion-icon name="medkit-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <p class="font-semibold" id="nursingCare">Nursing Care</p>
-  </div>
+  </section>
 
-  <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition">
-    <ion-icon name="fitness-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <p class="font-semibold" id="physio">Physiotherapy</p>
-  </div>
+  <section class="py-12 px-6">
+    <h2 class="text-2xl font-bold text-center mb-8" data-lang="ourServices">Our Services</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
 
-  <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition">
-    <ion-icon name="people-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <p class="font-semibold" id="elderlyCare">Elderly Care</p>
-  </div>
+      <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition dark:bg-gray-700 dark:shadow-lg">
+        <ion-icon name="medkit-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <p class="font-semibold" data-lang="nursingCare">Nursing Care</p>
+      </div>
 
-  <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition">
-    <ion-icon name="happy-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <p class="font-semibold" id="mentalHealth">Mental Health</p>
-  </div>
-</div>
+      <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition dark:bg-gray-700 dark:shadow-lg">
+        <ion-icon name="fitness-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <p class="font-semibold" data-lang="physio">Physiotherapy</p>
+      </div>
 
-  </section>  <!-- 💡 Why Us -->  <section class="bg-gray-100 py-10 px-6">
-    <h2 class="text-2xl font-bold text-center mb-6" id="whyChoose">Why Choose Nyumbani MedCare?</h2>
+      <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition dark:bg-gray-700 dark:shadow-lg">
+        <ion-icon name="people-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <p class="font-semibold" data-lang="elderlyCare">Elderly Care</p>
+      </div>
+
+      <div class="bg-blue-50 p-6 rounded-xl text-center shadow hover:shadow-md transition dark:bg-gray-700 dark:shadow-lg">
+        <ion-icon name="happy-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <p class="font-semibold" data-lang="mentalHealth">Mental Health</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-100 py-10 px-6 dark:bg-gray-800">
+    <h2 class="text-2xl font-bold text-center mb-6" data-lang="whyChoose">Why Choose Nyumbani MedCare?</h2>
     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+
       <div>
-        <ion-icon name="shield-checkmark-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-        <h4 class="font-semibold mb-1" id="verified">Verified Professionals</h4>
-        <p class="text-sm text-gray-600" id="verifiedDesc">All providers are background-checked and licensed.</p>
-      </div><div>
-    <ion-icon name="home-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <h4 class="font-semibold mb-1" id="homeCare">Home Convenience</h4>
-    <p class="text-sm text-gray-600" id="homeDesc">No queues. Get care at your doorstep.</p>
-  </div>
+        <ion-icon name="shield-checkmark-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <h4 class="font-semibold mb-1" data-lang="verified">Verified Professionals</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="verifiedDesc">All providers are background-checked and licensed.</p>
+      </div>
 
-  <div>
-    <ion-icon name="cash-outline" class="text-4xl text-blue-600 mb-2"></ion-icon>
-    <h4 class="font-semibold mb-1" id="affordable">Affordable Services</h4>
-    <p class="text-sm text-gray-600" id="affordableDesc">Transparent pricing. Pay via M-Pesa.</p>
-  </div>
-</div>
+      <div>
+        <ion-icon name="home-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <h4 class="font-semibold mb-1" data-lang="homeCare">Home Convenience</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="homeDesc">No queues. Get care at your doorstep.</p>
+      </div>
 
-  </section>  <!-- 📞 Footer -->  <footer class="bg-blue-600 text-white py-6 mt-8 text-center text-sm">
+      <div>
+        <ion-icon name="cash-outline" class="text-4xl text-blue-600 mb-2 dark:text-blue-400"></ion-icon>
+        <h4 class="font-semibold mb-1" data-lang="affordable">Affordable Services</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="affordableDesc">Transparent pricing. Pay via M-Pesa.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bg-blue-600 text-white py-6 mt-8 text-center text-sm dark:bg-blue-800">
     <p>&copy; 2025 Nyumbani MedCare · All Rights Reserved</p>
     <p>Contact: +254 712 345 678 | info@nyumbanicare.co.ke</p>
-  </footer>  <!-- ⬇️ Bottom Navigation -->  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 md:hidden z-40">
-    <a href="index.html" class="flex flex-col items-center text-blue-600">
+  </footer>
+
+  <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 md:hidden z-40 dark:bg-gray-800 dark:border-gray-700">
+    <a href="index.html" class="flex flex-col items-center text-blue-600 dark:text-blue-400">
       <ion-icon name="home-outline" class="text-2xl"></ion-icon>
-      <span id="navHome">Home</span>
+      <span class="text-xs" data-lang="navHome">Home</span>
     </a>
-    <a href="services.html" class="flex flex-col items-center text-gray-600">
+    <a href="services.html" class="flex flex-col items-center text-gray-600 dark:text-gray-300">
       <ion-icon name="medkit-outline" class="text-2xl"></ion-icon>
-      <span id="navServices">Services</span>
+      <span class="text-xs" data-lang="navServices">Services</span>
     </a>
-    <a href="login.html" class="flex flex-col items-center text-gray-600">
+    <a href="login.html" class="flex flex-col items-center text-gray-600 dark:text-gray-300">
       <ion-icon name="log-in-outline" class="text-2xl"></ion-icon>
-      <span id="navLogin">Login</span>
+      <span class="text-xs" data-lang="navLogin">Login</span>
     </a>
-  </nav>  <!-- 🌐 Language & Theme Toggle Scripts -->  <script>
-    const themeToggle = document.getElementById("theme-toggle");
-    themeToggle.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
-      themeToggle.innerText = themeToggle.innerText === "Dark" ? "Light" : "Dark";
+  </nav>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
 
     let currentLang = "en";
+
     const langData = {
       en: {
         navHome: "Home",
         navServices: "Services",
+        navAbout: "About",
+        navContact: "Contact",
         navLogin: "Login",
         heroTitle: "Nyumbani MedCare",
         heroDesc: "Get trusted healthcare services delivered to your home",
@@ -109,11 +153,13 @@
         homeCare: "Home Convenience",
         homeDesc: "No queues. Get care at your doorstep.",
         affordable: "Affordable Services",
-        affordableDesc: "Transparent pricing. Pay via M-Pesa."
+        affordableDesc: "Transparent pricing. Pay via M-Pesa.",
       },
       sw: {
         navHome: "Nyumbani",
         navServices: "Huduma",
+        navAbout: "Kuhusu",
+        navContact: "Mawasiliano",
         navLogin: "Ingia",
         heroTitle: "Nyumbani MedCare",
         heroDesc: "Pata huduma za afya za kuaminika nyumbani kwako",
@@ -129,17 +175,46 @@
         homeCare: "Huduma Nyumbani",
         homeDesc: "Hakuna foleni. Huduma nyumbani moja kwa moja.",
         affordable: "Huduma Nafuu",
-        affordableDesc: "Bei wazi. Lipa kwa M-Pesa."
+        affordableDesc: "Bei wazi. Lipa kwa M-Pesa.",
       }
     };
 
     function toggleLanguage() {
       currentLang = currentLang === "en" ? "sw" : "en";
-      Object.entries(langData[currentLang]).forEach(([key, value]) => {
-        const el = document.getElementById(key);
-        if (el) el.textContent = value;
+      document.querySelectorAll("[data-lang]").forEach(el => {
+        const key = el.getAttribute("data-lang");
+        if (langData[currentLang][key]) {
+          el.textContent = langData[currentLang][key];
+        }
       });
       document.getElementById("lang-btn").textContent = currentLang === "en" ? "Swahili" : "English";
     }
-  </script></body>
-</html>
+
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      body.classList.toggle('dark');
+
+      if (body.classList.contains('dark')) {
+        themeIcon.setAttribute('name', 'sunny-outline');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.setAttribute('name', 'moon-outline');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Apply saved theme on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.getElementById('theme-icon');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        themeIcon.setAttribute('name', 'sunny-outline');
+      } else {
+        themeIcon.setAttribute('name', 'moon-outline');
+      }
+    });
+  </script>
+</body>
+  </html>
