@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="register_title">NyumbaCare TZ - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="logo" data-i18n="app_name">NyumbaCare TZ</h1>
+            <nav class="desktop-nav" id="desktop-nav">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span data-i18n="nav_home">Home</span>
+                </a>
+                <a href="find-provider.html" class="nav-link">
+                    <i class="fas fa-user-nurse"></i>
+                    <span data-i18n="nav_find_provider">Find Provider</span>
+                </a>
+                <a href="book-appointment.html" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-i18n="nav_book">Book</span>
+                </a>
+                <a href="chat.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    <span data-i18n="nav_chat">Chat</span>
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span data-i18n="nav_profile">Profile</span>
+                </a>
+            </nav>
+            <div class="header-controls">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-toggle">
+                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <button id="lang-sw" class="lang-btn">SW</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="auth-form-section" id="registration-form-section">
+            <div class="auth-form-container">
+                <h2 data-i18n="register_heading">Create Your Account</h2>
+                <p data-i18n="register_subheading">Join us as a patient or a healthcare provider.</p>
+                
+                <div class="role-selector">
+                    <button type="button" class="role-btn" id="patient-btn" data-i18n="patient_role">Patient</button>
+                    <button type="button" class="role-btn active" id="provider-btn" data-i18n="provider_role">Provider</button>
+                </div>
+
+                <form class="auth-form" id="patient-registration-form" style="display: none;">
+                    <div class="input-group">
+                        <label for="reg-full-name-patient" data-i18n="full_name_label">Full Name</label>
+                        <input type="text" id="reg-full-name-patient" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-email-patient" data-i18n="email_label">Email Address</label>
+                        <input type="email" id="reg-email-patient" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password-patient" data-i18n="password_label">Password</label>
+                        <input type="password" id="reg-password-patient" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-confirm-password-patient" data-i18n="confirm_password_label">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password-patient" required>
+                    </div>
+                    
+                    <button type="submit" class="cta-button" data-i18n="register_btn">Register</button>
+
+                    <p class="error-message" id="register-error-message-patient"></p>
+                </form>
+
+                <form class="auth-form" id="provider-registration-form">
+                    <div class="input-group">
+                        <label for="reg-full-name-provider" data-i18n="full_name_label">Full Name</label>
+                        <input type="text" id="reg-full-name-provider" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-email-provider" data-i18n="email_label">Email Address</label>
+                        <input type="email" id="reg-email-provider" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password-provider" data-i18n="password_label">Password</label>
+                        <input type="password" id="reg-password-provider" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-confirm-password-provider" data-i18n="confirm_password_label">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password-provider" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-specialization" data-i18n="specialization_label">Specialization</label>
+                        <select id="reg-specialization" required>
+                            <option value="" data-i18n="select_specialization_option">Select a specialization</option>
+                            <option value="nurse" data-i18n="specialization_nurse">Nurse</option>
+                            <option value="doctor" data-i18n="specialization_doctor">Doctor</option>
+                            <option value="midwife" data-i18n="specialization_midwife">Midwife</option>
+                            <option value="other" data-i18n="specialization_other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group" id="other-specialty-group" style="display: none;">
+                        <label for="other-specialty" data-i18n="other_specialty_label">Please specify</label>
+                        <input type="text" id="other-specialty">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="license-upload" data-i18n="license_upload_label">Upload License/Credential (PDF, JPG)</label>
+                        <input type="file" id="license-upload" accept=".pdf,.jpg,.jpeg,.png" required>
+                    </div>
+
+                    <button type="submit" class="cta-button" data-i18n="register_btn">Register</button>
+
+                    <p class="error-message" id="register-error-message-provider"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="success-message-section" class="success-message-section hidden">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2 data-i18n="success_heading">Registration Submitted!</h2>
+            <p data-i18n="success_text">Your details have been submitted for review. We will contact you once your profile has been approved.</p>
+            <a href="find-provider.html" class="cta-button" data-i18n="back_to_providers_btn">Back to Providers</a>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span data-i18n="nav_home">Home</span>
+        </a>
+        <a href="find-provider.html" class="nav-item">
+            <i class="fas fa-user-nurse"></i>
+            <span data-i18n="nav_find_provider">Find Provider</span>
+        </a>
+        <a href="book-appointment.html" class="nav-item">
+            <i class="fas fa-calendar-check"></i>
+            <span data-i18n="nav_book">Book</span>
+        </a>
+        <a href="chat.html" class="nav-item">
+            <i class="fas fa-comments"></i>
+            <span data-i18n="nav_chat">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span data-i18n="nav_profile">Profile</span>
+        </a>
+    </nav>
+    
+    <script src="i18n.js"></script>
+    <script src="theme.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="register.js"></script>
+</body>
+</html>

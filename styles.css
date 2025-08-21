@@ -1,0 +1,1236 @@
+/* ======================== ROOT VARIABLES & FONTS ======================== */
+:root {
+    /* Light Mode Colors */
+    --primary-color: #0B8457;
+    --accent-color: #00B2A9;
+    --background-color: #F8F8F8;
+    --card-background-color: #FFFFFF;
+    --dark-text-color: #333333;
+    --light-text-color: #888888;
+    --border-color: #e0e0e0;
+}
+
+/* Dark Mode specific styles */
+.dark-mode {
+    --primary-color: #4CAF50;
+    --accent-color: #1a73e8;
+    --background-color: #121212;
+    --card-background-color: #1e1e1e;
+    --dark-text-color: #e0e0e0;
+    --light-text-color: #b0b0b0;
+    --border-color: #333;
+}
+
+/* ======================== BASE STYLES ======================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--dark-text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ======================== HEADER & NAVIGATION ======================== */
+.main-header {
+    background-color: var(--card-background-color);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Desktop Navigation styling */
+.desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Base style for nav links */
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+    color: var(--light-text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(0, 178, 169, 0.1);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    background-color: rgba(0, 178, 169, 0.1);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn, .lang-btn {
+    background: none;
+    border: none;
+    color: var(--dark-text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.icon-btn:hover, .lang-btn:hover {
+    color: var(--primary-color);
+    background-color: rgba(0, 178, 169, 0.1);
+}
+
+.lang-btn {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.lang-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Bottom Navigation (Mobile) */
+.bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-background-color);
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 0.75rem;
+    transition: color 0.3s;
+    padding: 5px;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+
+.nav-item.active,
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+/* ======================== MAIN CONTENT SECTIONS ======================== */
+.main-content {
+    padding-bottom: 70px;
+}
+
+section {
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page-heading {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text-color);
+}
+
+.hero-section p {
+    font-size: 1.1em;
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Styles for the action buttons in the hero section */
+.hero-action-links .cta-button, .hero-action-links .link-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 5px;
+}
+
+.hero-action-links .cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.hero-action-links .link-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.hero-action-links .cta-button:hover, .hero-action-links .link-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.services-section, .how-it-works {
+    text-align: center;
+}
+
+.service-cards-container, .steps-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.service-card, .step-card {
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover, .step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.service-icon, .step-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h4, .step-card h4 {
+    color: var(--primary-color);
+}
+
+.service-card p, .step-card p {
+    color: var(--light-text-color);
+    font-size: 0.9em;
+}
+
+/* Form Styles (for future login/register pages) */
+.form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 100px);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--card-background-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-text-color);
+}
+
+.form-container p {
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem;
+}
+
+.role-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.role-btn {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--dark-text-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--dark-text-color);
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(11, 132, 87, 0.2);
+}
+
+.auth-form .cta-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 1rem;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9em;
+    color: var(--light-text-color);
+}
+
+.error-message {
+    color: #ff3860;
+    font-size: 0.9em;
+    margin-top: -0.5rem;
+    text-align: center;
+}
+
+/* ======================== FIND PROVIDER PAGE STYLES ======================== */
+.find-provider-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 60px; /* Adjust based on your header height */
+    z-index: 50;
+    background-color: var(--background-color);
+    padding: 10px 0;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background-color: var(--card-background-color);
+    color: var(--dark-text-color);
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.search-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.provider-cards-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.provider-card {
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.provider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.provider-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.provider-card h4 {
+    color: var(--dark-text-color);
+    margin-bottom: 0.5rem;
+}
+
+.provider-card p {
+    color: var(--light-text-color);
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+
+.provider-card .location {
+    font-style: italic;
+    color: var(--light-text-color);
+}
+
+.provider-card .availability {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.book-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.book-btn.disabled {
+    background-color: var(--light-text-color);
+    cursor: not-allowed;
+}
+
+/* ======================== MEDIA QUERIES (RESPONSIVE) ======================== */
+@media (max-width: 768px) {
+    /* Mobile Styles: Show bottom nav, hide desktop nav */
+    .bottom-nav {
+        display: flex;
+    }
+    .desktop-nav {
+        display: none;
+    }
+    /* Adjust padding for mobile screens to account for bottom nav */
+    .main-content {
+        padding-bottom: 70px;
+    }
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    /* Hero action links for mobile: stack vertically */
+    .hero-action-links .cta-button, .hero-action-links .link-button {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Desktop Styles: Hide bottom nav, SHOW desktop nav */
+    .bottom-nav {
+        display: none;
+    }
+    .desktop-nav {
+        display: flex; /* This is the fix that makes the nav visible on large screens */
+    }
+    /* Remove padding at bottom for desktop as bottom nav is hidden */
+    .main-content {
+        padding-bottom: 2rem;
+    }
+    /* Hero action links for desktop: side-by-side */
+    .hero-action-links .cta-button, .hero-action-links .link-button {
+        display: inline-block;
+        margin: 5px;
+    }
+}
+
+/* General grid layouts for larger screens */
+@media (min-width: 600px) {
+    .service-cards-container, .steps-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .provider-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .service-cards-container, .steps-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .provider-cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Provider CTA Section */
+.provider-cta-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.provider-cta {
+    background-color: var(--card-background-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.provider-cta h4 {
+    color: var(--dark-text-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.provider-cta p {
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem;
+}
+
+.provider-cta .cta-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.provider-cta .cta-button:hover {
+    background-color: var(--primary-color);
+}
+/* ======================== REGISTRATION PAGE STYLES ======================== */
+.auth-form-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.auth-form-container {
+    padding: 1rem;
+}
+
+.auth-form-section h2, .auth-form-section p {
+    text-align: center;
+}
+/* ======================== SUCCESS MESSAGE STYLES ======================== */
+.success-message-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.success-message-section h2 {
+    margin-top: 1rem;
+    color: var(--primary-color);
+}
+
+.success-message-section .success-icon {
+    font-size: 4rem;
+    color: var(--success-color);
+}
+/* ======================== BOOKING PAGE STYLES ======================== */
+.booking-form-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.provider-info-card {
+    background-color: var(--light-background-color);
+    padding: 1rem;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.provider-info-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.provider-info-card p {
+    margin: 0.25rem 0;
+}
+
+.booking-form .input-group {
+    margin-bottom: 1.5rem;
+}
+
+.booking-form .cta-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem;
+}
+
+#booking-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+/* ======================== CHAT PAGE STYLES ======================== */
+.chat-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+}
+
+.messages-display {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.sent-message {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+}
+
+.received-message {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    align-self: flex-start;
+}
+
+.chat-input-area {
+    display: flex;
+    padding-top: 1rem;
+    gap: 0.5rem;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background-color);
+}
+
+.chat-input-area .cta-button {
+    width: auto;
+    padding: 0.75rem 1.25rem;
+    border-radius: 20px;
+}
+/* --- Profile Page Styling --- */
+
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    min-height: 50vh;
+}
+
+.auth-status-container {
+    background-color: var(--light-bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .auth-status-container {
+    background-color: var(--dark-element-bg-color);
+}
+
+.user-info-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-icon {
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .user-info {
+    color: var(--light-text-color);
+}
+
+.user-info p {
+    font-weight: 400;
+    color: var(--secondary-text-color);
+}
+
+body.dark-mode .user-info p {
+    color: var(--dark-text-color);
+}
+
+.no-auth-display {
+    padding: 1rem;
+}
+
+.no-auth-display p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .no-auth-display p {
+    color: var(--light-text-color);
+}
+
+.no-auth-display .cta-button, 
+.no-auth-display .secondary-btn {
+    width: 100%;
+    margin-bottom: 0.8rem;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* --- Login Modal Styling --- */
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: var(--light-bg-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+body.dark-mode .modal-content {
+    background-color: var(--dark-element-bg-color);
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .modal-content h3 {
+    color: var(--light-text-color);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: var(--secondary-text-color);
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text-color);
+    font-weight: 600;
+}
+
+body.dark-mode .form-group label {
+    color: var(--light-text-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: var(--light-element-bg-color);
+    color: var(--dark-text-color);
+    transition: border-color 0.3s ease;
+}
+
+body.dark-mode .form-group input {
+    background-color: var(--dark-input-bg-color);
+    border-color: var(--dark-border-color);
+    color: var(--light-text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+}
+
+.error-message {
+    color: var(--error-color);
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.cta-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+}
+/* --- Admin Panel Styling --- */
+#admin-panel-content {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.loading-message,
+.access-denied-message,
+.success-message-box {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+}
+
+.loading-message {
+    color: var(--primary-color);
+}
+
+.access-denied-message {
+    color: var(--error-color);
+}
+
+.fa-spinner {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.table-container {
+    background-color: var(--light-bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+body.dark-mode .table-container {
+    background-color: var(--dark-element-bg-color);
+}
+
+.table-container h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .table-container h3 {
+    color: var(--light-text-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 1rem;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode table th,
+body.dark-mode table td {
+    border-bottom: 1px solid var(--dark-border-color);
+}
+
+table th {
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+table td {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode table td {
+    color: var(--light-text-color);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+.approve-btn, .reject-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.approve-btn {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+.approve-btn:hover {
+    background-color: #36a466; /* A slightly darker green */
+}
+
+.reject-btn {
+    background-color: var(--error-color);
+    color: var(--white);
+}
+
+.reject-btn:hover {
+    background-color: #c43e4e; /* A slightly darker red */
+}
+
+.license-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.license-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Registration Form Styling --- */
+
+.form-container {
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form {
+    background-color: var(--light-bg-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+}
+
+body.dark-mode .auth-form {
+    background-color: var(--dark-element-bg-color);
+}
+
+.role-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.role-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+    cursor: pointer;
+    padding: 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+body.dark-mode .role-option {
+    border-color: var(--dark-border-color);
+}
+
+.role-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.role-option:hover {
+    background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.role-option input[type="radio"] {
+    display: none;
+}
+
+.role-option label {
+    font-weight: 600;
+    color: var(--dark-text-color);
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+}
+
+body.dark-mode .role-option label {
+    color: var(--light-text-color);
+}
+
+/* New style for admin login link on profile page */
+.admin-link {
+    margin-top: 10px;
+}
+/* --- Profile Page Styling (Updated Section) --- */
+.no-auth-display {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Creates space between buttons */
+}
+
+.no-auth-display p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .no-auth-display p {
+    color: var(--light-text-color);
+}
+
+/* Updated button styles to be more flexible */
+.no-auth-display .cta-button, 
+.no-auth-display .secondary-btn,
+.no-auth-display .admin-link {
+    width: 100%;
+    text-align: center;
+    margin: 0; /* Remove previous margins */
+}
+
+.secondary-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.admin-link {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.admin-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+body.dark-mode .admin-link {
+    color: var(--light-text-color);
+}
+
+body.dark-mode .admin-link:hover {
+    color: var(--primary-color);
+}
